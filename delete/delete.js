@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
             console.log('Error in connection:- ', err)
         else {
             let db = conn.db('nodedb')
-            db.collection('products').deleteOne(obj, (err, result) => {
+            db.collection('Products').deleteOne(obj, (err, result) => {
                 if (err)
                     res.json({ 'delete': 'Error ' + err })
                 else {
