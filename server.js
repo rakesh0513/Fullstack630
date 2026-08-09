@@ -8,7 +8,7 @@ let app = express()
 app.use(bodyparser.json())
 //client is not sending from data -> encoding JSON
 app.use(bodyparser.urlencoded({extended : false}))
-// enable CORS -> Cross Origin resource sharing -> communication among various ports
+// enable CORS -> Cross Origin Resource Sharing -> commmunication among various ports
 app.use(cors())
 //create port
 let port = process.env.PORT || 8080
@@ -18,19 +18,21 @@ let insert = require('./insert/insert')
 let update = require('./update/update')
 let remove = require('./delete/delete')
 let leave = require('./leave/leave')
+let health = require('./health/health')
 //use above modules
 app.use("/fetch", fetch)
 app.use("/insert", insert)
 app.use("/update", update)
 app.use("/delete", remove)
 app.use("/leaves", leave)
+app.use("/health", health)
 //assign port no
 app.listen(port, () => {
     console.log("Server listening port no:- ", port)
 })
 /*
     >node server
-    Test following URLs with postman
+    Test following URLS with postman
     http://localhost:8080/fetch     (get)
     http://localhost:8080/insert    |
     http://localhost:8080/update    |(post)
